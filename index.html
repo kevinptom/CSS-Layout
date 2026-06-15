@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamental Layout Comprehension</title>
+    <style>
+        /* 1. Base Styles & Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f7f6;
+            /* Flexbox applied to body ensures the footer sticks to the bottom */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; 
+        }
+
+        /* 2. Positioning Technique */
+        header {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem;
+            text-align: center;
+            /* Sticky positioning keeps the header visible when scrolling */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* 3. Flexbox Layout Technique (Sidebar + Main Content) */
+        .layout-wrapper {
+            display: flex;
+            flex: 1; /* Pushes the footer down */
+            flex-direction: column; /* Stacks on mobile */
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Media Query to switch to a two-column layout on larger screens */
+        @media (min-width: 768px) {
+            .layout-wrapper {
+                flex-direction: row; 
+            }
+        }
+
+        /* Sidebar Styling */
+        nav {
+            background: #ecf0f1;
+            padding: 2rem;
+            /* Flex basis sets a fixed width for the sidebar on desktop */
+            flex: 0 0 250px; 
+            border-right: 1px solid #ddd;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            margin-bottom: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #e74c3c;
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 2rem;
+            flex: 1; /* Takes up the remaining space next to the sidebar */
+            background: #ffffff;
+        }
+
+        main h2 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        /* 4. CSS Grid Layout Technique (Inner Content Cards) */
+        .grid-container {
+            display: grid;
+            /* Creates responsive columns that automatically wrap */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: #3498db;
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto; /* Pushes it to the very bottom */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Layout Mastery Project</h1>
+    </header>
+
+    <div class="layout-wrapper">
+        <nav>
+            <h2>Menu</h2>
+            <br>
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">CSS Grid</a></li>
+                <li><a href="#">Flexbox</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <h2>Welcome to the Content Area</h2>
+            <p>This layout demonstrates a solid grasp of fundamental CSS properties. The page structure utilizes <strong>Flexbox</strong> to align the sidebar and main content, while ensuring the footer always stays at the bottom of the screen. </p>
+            
+            <div class="grid-container">
+                <div class="card">Grid Component 1</div>
+                <div class="card">Grid Component 2</div>
+                <div class="card">Grid Component 3</div>
+                <div class="card">Grid Component 4</div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Fundamental Layout Comprehension Task</p>
+    </footer>
+
+</body>
+</html>
